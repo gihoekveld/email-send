@@ -1,0 +1,28 @@
+name = "email-send-development"
+type = "javascript"
+zone_id = "ZONE_ID"
+account_id = "ACCOUNT_ID"
+workers_dev = true
+compatibility_date = "2022-06-14"
+[vars]
+ENVIRONMENT = "local"
+
+
+[env.production]
+name = "email-send"
+workers_dev = false
+route = "api.codelearn.space/*"
+[env.production.vars]
+ENVIRONMENT = "production"
+
+
+[dev]
+ip = "127.0.0.1"
+port = 8787
+local_protocol="http"
+upstream_protocol="https"
+
+[build]
+command = "npm install --force && npm run build"
+[build.upload]
+format = "service-worker"
